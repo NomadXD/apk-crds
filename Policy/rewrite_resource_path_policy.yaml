@@ -1,0 +1,12 @@
+apiVersion: wso2.com/v1beta1
+kind: Policy
+metadata:
+  name: custom-policy-5
+  namespace: wso2
+spec:
+  type: REWRITE_RESOURCE_PATH
+  parameters:
+    - parameterName: resourcePath
+      parameterValue: /api/v2/foo
+    - parameterName: includeQueryParams
+      parameterValue: 'true'

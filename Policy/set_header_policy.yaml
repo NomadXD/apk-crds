@@ -1,0 +1,22 @@
+apiVersion: wso2.com/v1beta1
+kind: Policy
+metadata:
+  name: custom-policy-1
+  namespace: wso2
+spec:
+  type: SET_HEADER
+  parameters:
+    - parameterName: x-wso2-custom-header
+      parameterValue: foo
+  policySpec:
+    json:
+      foo: fooVal
+      bar: barVal
+      baz:
+        baz1: baz1
+  template: |
+    custom policy template starts here
+      define custom policy here
+    custom policy template ends here
+
+

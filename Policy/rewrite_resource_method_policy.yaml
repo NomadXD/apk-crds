@@ -1,0 +1,12 @@
+apiVersion: wso2.com/v1beta1
+kind: Policy
+metadata:
+  name: custom-policy-4
+  namespace: wso2
+spec:
+  type: REWRITE_RESOURCE_METHOD
+  parameters:
+    - parameterName: currentMethod
+      parameterValue: GET
+    - parameterName: updatedMethod
+      parameterValue: POST

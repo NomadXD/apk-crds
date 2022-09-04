@@ -1,0 +1,10 @@
+apiVersion: wso2.com/v1beta1
+kind: Policy
+metadata:
+  name: custom-policy-3
+  namespace: wso2
+spec:
+  type: ADD_QUERY
+  parameters:
+    - parameterName: queryParamName
+      parameterValue: queryParamValue

@@ -1,0 +1,35 @@
+apiVersion: wso2.com/v1beta1
+kind: EndPoint
+metadata:
+  name: bar-svc
+  namespace: wso2
+spec:
+  service: bar-svc
+  port: 8080
+  endpointType: production
+  certificateName: bar-cert
+  http2Enabled: false
+  timeout: 2000
+  credentials:
+    type: Basic
+    userName: nomadxd
+    password: nomadxd@123
+  retryConfig:
+    count: 3
+    statusCode: 503
+  circuitBreakers:
+    maxConnections: 4
+    maxRequests: 10
+    maxPendingRequests: 5
+    maxRetries: 4
+    maxConnectionPools: 4
+  loadBalanceEndpoints:
+    - service: bar-lb1-svc
+      port: 8080
+    - service: bar-lb2-svc
+      port: 8080
+  failoverEndpoints:
+    - service: bar-fo1-svc
+      port: 8080
+    - service: bar-fo2-svc
+      port: 8080
