@@ -4,7 +4,7 @@ metadata:
   name: custom-policy-1
   namespace: wso2
 spec:
-  type: SET_HEADER
+  type: CUSTOM_POLICY_1
   parameters:
     - parameterName: x-wso2-custom-header
       parameterValue: foo
@@ -14,9 +14,10 @@ spec:
       bar: barVal
       baz:
         baz1: baz1
+        baz2:
+          foobaz: foobaz
+          foobar: foobar
   template: |
     custom policy template starts here
       define custom policy here
     custom policy template ends here
-
-

@@ -1,0 +1,19 @@
+kind: HTTPRoute
+apiVersion: gateway.networking.k8s.io/v1alpha2
+metadata:
+  name: bookinfo
+spec:
+  parentRefs:
+      name: eg-gw
+  hostnames:
+    - "bookinfo.com"
+  rules:
+  - filters:
+    - type: RequestHeaderModifier
+      requestHeaderModifier:
+        add:
+        - name: x-wso2-custom-header
+          value: foo
+    backendRefs:
+    - name: productpage
+      port: 8080

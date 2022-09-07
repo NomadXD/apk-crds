@@ -1,0 +1,10 @@
+apiVersion: wso2.com/v1beta1
+kind: Policy
+metadata:
+  name: custom-policy-2
+  namespace: wso2
+spec:
+  type: REMOVE_HEADER
+  parameters:
+    - parameterName: x-wso2-custom-header
+      parameterValue: anyvalue
