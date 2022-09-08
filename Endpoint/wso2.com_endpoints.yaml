@@ -23,16 +23,22 @@ spec:
               properties:
                 service:
                   type: string
+                  minLength: 1
                 port:
                   type: integer
+                  default: 80
                 endpointType:
                   type: string
+                  enum: ["production", "sandbox"]
+                  default: "production"
                 http2Enabled:
                   type: boolean
+                  default: false
                 certificateName:
                   type: string
                 timeout:
                   type: integer
+                  default: 2000
                 credentials:
                   type: object
                   properties:
@@ -51,6 +57,7 @@ spec:
                       type: integer
                     statusCode:
                       type: integer
+                  required: ["count", "statusCode"]
                 circuitBreakers:
                   type: object
                   properties:
@@ -73,6 +80,8 @@ spec:
                         type: string
                       port:
                         type: integer
+                        default: 80
+                    required: ["service"]
                 failoverEndpoints:
                   type: array
                   items:
@@ -81,8 +90,11 @@ spec:
                       service:
                         type: string
                       port:
-                        type: integer         
-                 
+                        type: integer
+                        default: 80
+                    required: ["service"]         
+              required: ["service", "endpointType"]
+          required: ["spec"]   
   # either Namespaced or Cluster
   scope: Namespaced
   names:
