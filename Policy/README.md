@@ -1,3 +1,14 @@
+## Policy related CRDs
+
+For simple policies like add header, remove header, add query param use K8s gateway filters or `RequestHeaderModifier` defined in envoy gateway. Refer `/examples/RequestHeaderModifier`.
+
+For more advanced use cases, follow one of the following custom policy formats defined in `wso2.com_policies.yaml`.
+
+### 1. Policy defined using parameters.
+
+Can use any arbitrary number of parameters.
+
+```yaml
 apiVersion: wso2.com/v1beta1
 kind: Policy
 metadata:
@@ -8,7 +19,13 @@ spec:
   parameters:
     - parameterName: x-wso2-custom-header
       parameterValue: foo
----
+```
+
+### 2. Policy defined using a json scheme.
+
+Can use any arbitrary json.
+
+```yaml
 apiVersion: wso2.com/v1beta1
 kind: Policy
 metadata:
@@ -25,7 +42,11 @@ spec:
         baz2:
           foobaz: foobaz
           foobar: foobar
----
+```
+
+### 3. Policy defined using a string template.
+
+```yaml
 apiVersion: wso2.com/v1beta1
 kind: Policy
 metadata:
@@ -37,3 +58,4 @@ spec:
     custom policy template starts here
       define custom policy here
     custom policy template ends here
+```

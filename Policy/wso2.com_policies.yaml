@@ -23,6 +23,7 @@ spec:
               properties:
                 type:
                   type: string
+                  minLength: 1
                 parameters:
                   type: array
                   items:
@@ -30,6 +31,7 @@ spec:
                     properties:
                       parameterName:
                         type: string
+                        minLength: 1
                       parameterValue:
                         type: string
                 policySpec:
@@ -41,6 +43,13 @@ spec:
                       description: this is arbitrary JSON
                 template:
                   type: string
+              required: ["type"]
+              # only one of parameters, policySpec and template can be specified.
+              oneOf:
+              - required: ["parameters"]
+              - required: ["policySpec"]
+              - required: ["template"]
+          required: ["spec"]
 
   # either Namespaced or Cluster
   scope: Namespaced
@@ -54,6 +63,3 @@ spec:
     # shortNames allow shorter string to match your resource on the CLI
     shortNames:
     - pc
-
-
-
